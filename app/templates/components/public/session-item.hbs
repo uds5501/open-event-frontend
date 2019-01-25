@@ -20,14 +20,22 @@
           </div>
         </div>
         <div class="ui right aligned column four wide less left padding">
-          {{#if session.startsAt}}
+          {{#if session.microlocation.name}}
             <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+          {{else}}
+            <div class=""><i class="marker icon"></i>{{t 'Microlocation not decided yet'}}</div>
+          {{/if}}
+          
+          {{#if session.startsAt}}
             <div class=""><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{else}}
+            <div class=""><i class="wait icon"></i>{{t 'Session not yet scheduled'}}</div>
           {{/if}}
         </div>
       </div>
       <div class="row">
         <div class="column session-description">
+          {{!-- {{session.startsAt}} --}}
           {{sanitize session.shortAbstract}}
         </div>
       </div>
