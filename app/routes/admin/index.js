@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
+import Ember from 'ember';
 
 export default Route.extend({
   async model() {
     return {
-      events: await this.get('store').queryRecord('admin-statistics-event', {
+      events: await this.get('store').  queryRecord('admin-statistics-event', {
         filter: {
           name : 'id',
           op   : 'eq',
@@ -32,5 +33,13 @@ export default Route.extend({
         }
       })
     };
-  }
+  },
+  setupController(controller, model) {
+    this._super(...arguments);
+    Ember.set(controller, 'sessions', model.sessions);
+    Ember.set(controller, 'events', model.events);
+    Ember.set(controller, 'mails', model.mails);
+    Ember.set(controller, 'users', model.users);
+  },
+
 });
