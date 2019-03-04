@@ -16,6 +16,7 @@
         <h3 class="ui header">
           {{t 'Number of Sessions'}}
         </h3>
+        {{ember-chart type="pie" data=sessionsData options=pieOptions}}
         <div class="ui small statistic">
           <div class="label">
             {{t 'Accepted'}}
@@ -48,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="six wide column">
+    <div class="five wide column">
       <div class="ui center aligned fluid segment">
         <h3 class="ui left aligned header">
           {{t 'Events'}}
@@ -57,6 +58,7 @@
         <h3 class="ui header">
           {{t 'Number of Events'}}
         </h3>
+        {{ember-chart type='doughnut' data=eventsData options=pieOptions}}
         <div class="ui small statistic">
           <div class="label">
             {{t 'Live'}}
@@ -126,7 +128,7 @@
         </table>
       </div>
     </div>
-    <div class="five wide column">
+    <div class="six wide column">
       <div class="ui center aligned fluid segment">
         <h3 class="ui left aligned header">
           {{t 'Users'}}
@@ -136,7 +138,8 @@
         <h3 class="ui header">
           {{t 'System Roles'}}
         </h3>
-        <table class="ui celled table">
+        {{ember-chart type='bar' data=usersSystemData}}
+        {{!-- <table class="ui celled table">
           <tbody>
             <tr>
               <td>{{t 'No. of Super Admins'}}</td>
@@ -159,11 +162,13 @@
               <td class="right aligned">{{model.users.total}}</td>
             </tr>
           </tbody>
-        </table>
+        </table> --}}
+        <strong>Total Users : </strong>{{model.users.total}}
         <h3 class="ui header">
           {{t 'Event Roles'}}
         </h3>
-        <table class="ui celled table">
+        {{ember-chart type='bar' data=usersEventData}}
+        {{!-- <table class="ui celled table">
           <tbody>
             <tr>
               <td>{{t 'No. of Organizers'}}</td>
@@ -182,7 +187,7 @@
               <td class="right aligned">{{model.users.attendee}}</td>
             </tr>
           </tbody>
-        </table>
+        </table> --}}
 
       </div>
     </div>
