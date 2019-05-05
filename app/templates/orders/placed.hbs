@@ -45,6 +45,17 @@
           {{paypal-button data=model.order}}
         </div>
       {{/if}}
+      <div>
+        <form class="checkout-form" name="checkoutForm" method="POST" action={{omiseFormAction}}>
+          <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                  data-key="pkey_test_xxxxxxxxx"
+                  data-amount="{{ paymentAmount }}"
+                  data-currency="THB"
+                  data-default-payment-method="credit_card"
+                  data-other-payment-methods="internet_banking, bill_payment_tesco_lotus, alipay, credit_card, pay_easy, net_banking">
+          </script>
+        </form>
+      </div>
     </div>
   </div>
   
