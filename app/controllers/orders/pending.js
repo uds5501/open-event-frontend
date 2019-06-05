@@ -26,7 +26,8 @@ export default Controller.extend({
   }),
 
   omiseFormAction: computed('model.order', function() {
-    return 'http://127.0.0.1:5000/v1/orders/' + this.get('model.order.identifier') + '/omise-checkout';
+    let identifier = this.get('model.order.identifier');
+    return `http://127.0.0.1:5000/v1/orders/'${identifier}'/omise-checkout`;
   }),
 
   actions: {
