@@ -13,8 +13,20 @@ export default Controller.extend({
     return this.get('model.order.paymentMode') === 'paypal';
   }),
 
+  isOmise: computed('model.order', function() {
+    return this.get('model.order.paymentMode') === 'omise';
+  }),
+
   paymentAmount: computed('model.order', function() {
     return this.get('model.order.amount') * 100;
+  }),
+
+  publicKeyOmise: computed('settings.omiseLivePublic', function() {
+    return this.get('settings.omiseLivePublic') || this.get('settings.omiseTestPublic');
+  }),
+
+  omiseFormAction: computed('model.order', function() {
+    return 'http://127.0.0.1:5000/v1/orders/' + this.get('model.order.identifier') + '/omise-checkout';
   }),
 
   actions: {
