@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Controller.extend({
 
@@ -24,10 +25,9 @@ export default Controller.extend({
   publicKeyOmise: computed('settings.omiseLivePublic', function() {
     return this.get('settings.omiseLivePublic') || this.get('settings.omiseTestPublic');
   }),
-
   omiseFormAction: computed('model.order', function() {
     let identifier = this.get('model.order.identifier');
-    return `http://127.0.0.1:5000/v1/orders/'${identifier}'/omise-checkout`;
+    return `${ENV.APP.apiHost}/v1/orders/${identifier}/omise-checkout`;
   }),
 
   actions: {
